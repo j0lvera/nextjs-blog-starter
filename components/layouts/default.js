@@ -13,12 +13,8 @@ function Layout({ children, title = "Next.js Blog Starter" }) {
 
       <footer>
         &copy; {new Date().getFullYear()}, Proudly built with{" "}
-        <a href="https://nextjs.org">
-          Next.js -{" "}
-          <a href="https://github.com/j0lv3r4/nextjs-blog-starter">
-            source code
-          </a>
-        </a>
+        <a href="https://nextjs.org">Next.js</a> -{" "}
+        <a href="https://github.com/j0lv3r4/nextjs-blog-starter">source code</a>
       </footer>
 
       <style jsx>{`
