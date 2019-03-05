@@ -1,4 +1,3 @@
-const withCSS = require("@zeit/next-css");
 const withMDX = require("@zeit/next-mdx")({
   extension: /.mdx?$/,
   options: {
@@ -6,17 +5,28 @@ const withMDX = require("@zeit/next-mdx")({
   }
 });
 
-module.exports = withMDX(
-  withCSS({
-    target: "serverless",
-    pageExtensions: ["js", "jsx", "mdx", "md"],
-    webpack: config => {
-      // Fixes npm packages that depend on `fs` module
-      config.node = {
-        fs: "empty"
-      };
+module.exports = withMDX({
+  target: "serverless",
+  pageExtensions: ["js", "jsx", "mdx", "md"],
+  webpack: (config, { defaultLoaders }) => {
+    // Fixes npm packages that depend on `fs` module
+    config.node = {
+      fs: "empty"
+    };
 
-      return config;
-    }
-  })
-);
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        defaultLoaders.babel,
+        {
+          loader: require("styled-jsx/webpack").loader,
+          options: {
+            type: "global"
+          }
+        }
+      ]
+    });
+
+    return config;
+  }
+});
