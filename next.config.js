@@ -1,20 +1,32 @@
-const withCSS = require('@zeit/next-css');
-const withMDX = require('@zeit/next-mdx')({
+const withMDX = require("@zeit/next-mdx")({
   extension: /.mdx?$/,
   options: {
-    hastPlugins: [require("@mapbox/rehype-prism")],
+    hastPlugins: [require("@mapbox/rehype-prism")]
   }
 });
 
-module.exports = withCSS(withMDX({
-  target: 'serverless',
+module.exports = withMDX({
+  target: "serverless",
   pageExtensions: ["js", "jsx", "mdx", "md"],
-  webpack: config => {
+  webpack: (config, { defaultLoaders }) => {
     // Fixes npm packages that depend on `fs` module
     config.node = {
-      fs: 'empty'
-    }
+      fs: "empty"
+    };
 
-    return config
+    config.module.rules.push({
+      test: /\.css$/,
+      use: [
+        defaultLoaders.babel,
+        {
+          loader: require("styled-jsx/webpack").loader,
+          options: {
+            type: "global"
+          }
+        }
+      ]
+    });
+
+    return config;
   }
-}))
+});
