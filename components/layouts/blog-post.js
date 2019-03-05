@@ -1,16 +1,16 @@
-import React from 'react';
-import SyntaxHighlight from '../SyntaxHighlight';
-import Layout from './default';
+import React from "react";
+import SyntaxHighlight from "../syntax-highlight";
+import Layout from "./default";
 
 function BlogPost({ meta, children }) {
-    return (
-        <Layout title={meta.title}>
-            <SyntaxHighlight/>
+  return (
+    <Layout title={meta.title}>
+      <SyntaxHighlight />
 
-            <h1>{meta.title}</h1>
-            { children }
-        </Layout>
-    )
+      <h1>{meta.title}</h1>
+      {children}
+    </Layout>
+  );
 }
 
-export default BlogPost
+export default BlogPost;

@@ -20,7 +20,7 @@ const Post = ({ title, summary, date, path }) => (
         </Link>
       </header>
 
-      <div>{summary}</div>
+      <div className="post-summary">{summary}</div>
     </article>
     <style jsx>{`
       .post:not(:last-child) {
@@ -33,15 +33,15 @@ const Post = ({ title, summary, date, path }) => (
 
       .posted-on {
         display: flex;
-        color: #333;
         margin-bottom: 1em;
+        color: #333;
       }
     `}</style>
   </>
 );
 
 const Home = () => (
-  <Layout title="Home">
+  <Layout title="Home - Next.js Blog Starter">
     {blogposts.map((post, index) => (
       <Post
         key={index}
