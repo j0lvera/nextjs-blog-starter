@@ -1,16 +1,27 @@
-import React from 'react';
-import SyntaxHighlight from '../SyntaxHighlight';
-import Layout from './default';
+import React from "react";
+import Layout from "./default";
+import SyntaxHighlight from "../syntax-highlight";
+import PublishedAt from "../utils/published-at";
 
 function BlogPost({ meta, children }) {
-    return (
-        <Layout title={meta.title}>
-            <SyntaxHighlight/>
+  return (
+    <Layout pageTitle={meta.title}>
+      <SyntaxHighlight />
+      <article>
+        <header>
+          <h1>{meta.title}</h1>
 
-            <h1>{meta.title}</h1>
-            { children }
-        </Layout>
-    )
+          <PublishedAt link={meta.path} date={meta.publishedAt} />
+        </header>
+        <div>{children}</div>
+      </article>
+      <style jsx>{`
+        header {
+          margin-bottom: 2em;
+        }
+      `}</style>
+    </Layout>
+  );
 }
 
-export default BlogPost
+export default BlogPost;
