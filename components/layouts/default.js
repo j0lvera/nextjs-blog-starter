@@ -1,47 +1,88 @@
-import Head from "../head";
+import Router from "next/router";
+import Link from "next/link";
+import Header from "../header";
+import Footer from "../footer";
 
-function Layout({ children, title = "Next.js Blog Starter" }) {
+function Layout({ path, children, pageTitle = "Next.js Blog Starter" }) {
   return (
     <>
-      <Head title={title} />
+      <Header path={path} pageTitle={pageTitle} />
 
-      <header>
-        <h1>Next.js Blog Starter</h1>
-      </header>
+      <main className="wrap">{children}</main>
 
-      <main>{children}</main>
+      <Footer />
+      <style jsx global>{`
+        html {
+          box-sizing: border-box;
+        }
 
-      <footer>
-        &copy; {new Date().getFullYear()}, Proudly built with{" "}
-        <a href="https://nextjs.org">Next.js</a> -{" "}
-        <a href="https://github.com/j0lv3r4/nextjs-blog-starter">source code</a>
-      </footer>
+        *,
+        *:before,
+        *:after {
+          box-sizing: inherit;
+        }
 
-      <style jsx>{`
-        :global(body) {
+        body {
           margin: 0;
           font-size: 18px;
-          font-family: -apple-system, BlinkMacSystemFont, Avenir Next, Avenir,
-            Helvetica, sans-serif;
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+            Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+            "Segoe UI Symbol";
+          font-weight: 400;
+          color: #333;
+          line-height: 1.618;
         }
 
         h1 {
+          margin-bottom: 0.25em;
+          font-size: 2.618em;
+          font-weight: 800;
+        }
+
+        h2 {
+          font-size: 2.015em;
+        }
+
+        h3 {
+          font-size: 1.618em;
+        }
+
+        h1,
+        h2,
+        h3 {
+          margin-top: 1em;
+          margin-bottom: 0.354em;
+          line-height: 1.125;
+        }
+
+        p {
           margin-top: 0;
+          margin-bottom: 1em;
+        }
+
+        hr {
+          position: relative;
+          margin: 1.5em 0;
+          border: 0;
+          border-top: 1px solid #eee;
+          border-bottom: 1px solid #fff;
+        }
+
+        blockquote {
+          padding: 0.5em 1em;
+          margin: 0.8em 0;
+          color: #555;
+          border-left: 0.25em solid #ccc;
+        }
+
+        blockquote p:last-child {
           margin-bottom: 0;
         }
 
-        header,
-        main,
-        footer {
-          max-width: 38em;
+        .wrap {
+          max-width: 35em;
           margin-left: auto;
           margin-right: auto;
-        }
-
-        header,
-        footer {
-          padding-top: 2em;
-          padding-bottom: 2em;
         }
       `}</style>
     </>
