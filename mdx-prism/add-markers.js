@@ -1,3 +1,6 @@
+/**
+ * Code copied from: https://github.com/rexxars/react-refractor/blob/master/src/addMarkers.js
+ */
 const lineNumberify = function lineNumberify(ast, lineNum = 1) {
   let lineNumber = lineNum;
   return ast.reduce(

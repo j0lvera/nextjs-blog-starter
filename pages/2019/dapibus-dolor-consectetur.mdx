@@ -14,6 +14,52 @@ export default ({ children, url }) => (
   </BlogPost>
 );
 
+Computed values are another reason people sometimes attempt to copy props into state. For example, imagine that we determined the _button text_ color based on an expensive computation with background `color` as an argument:
+
+```jsx{1}
+// prettier-ignore
+<form>
+  <ErrorBoundary>
+    <CartDescription items={props.items} />
+  </ErrorBoundary>
+  <ErrorBoundary>    {/* Uh oh! Something broke in here 😢 */}    <CreditCardInput />  </ErrorBoundary>  <ErrorBoundary>
+    <CheckoutButton cartId={props.id} />
+  </ErrorBoundary>
+</form>
+```
+
+```jsx{5}
+// prettier-ignore
+class Button extends React.Component {
+  render() {
+    return (
+    <button>
+      {this.props.children}
+    </button>
+    );
+  }
+}
+```
+
+```jsx{9}
+class Button extends React.Component {
+  state = {
+    textColor: slowlyCalculateTextColor(this.props.color)
+  };
+  render() {
+    return (
+      <button
+        className={
+          "Button-" + this.props.color + " Button-text-" + this.state.textColor // 🔴 Stale on `color` prop updates
+        }
+      >
+        {this.props.children}
+      </button>
+    );
+  }
+}
+```
+
 Nullam quis risus eget urna mollis ornare vel eu leo. Donec ullamcorper nulla non metus auctor fringilla. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Maecenas faucibus mollis interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit.
 
 Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam quis risus eget urna mollis ornare vel eu leo. Curabitur blandit tempus porttitor. Curabitur blandit tempus porttitor.

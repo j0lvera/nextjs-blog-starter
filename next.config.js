@@ -3,6 +3,7 @@ const withMDX = require("@zeit/next-mdx")({
   options: {
     // hastPlugins: [require("@mapbox/rehype-prism")]
     hastPlugins: [require("./mdx-prism/index")]
+    // mdPlugins: [require("gatsby-remark-prismjs")]
   }
 });
 
