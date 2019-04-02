@@ -13,6 +13,7 @@ function Layout({ path, children, pageTitle = "Next.js Blog Starter" }) {
       <Footer />
       <style jsx global>{`
         html {
+          margin: 0;
           box-sizing: border-box;
         }
 
@@ -24,40 +25,57 @@ function Layout({ path, children, pageTitle = "Next.js Blog Starter" }) {
 
         body {
           margin: 0;
-          font-size: 18px;
-          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-            Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-            "Segoe UI Symbol";
+          font-size: 20px;
+          font-family: "PT Sans", sans-serif;
           font-weight: 400;
           color: #333;
-          line-height: 1.618;
-        }
-
-        h1 {
-          margin-bottom: 0.25em;
-          font-size: 2.618em;
-          font-weight: 800;
-        }
-
-        h2 {
-          font-size: 2.015em;
-        }
-
-        h3 {
-          font-size: 1.618em;
+          line-height: 1.5;
         }
 
         h1,
         h2,
+        h3,
+        h4 {
+          margin-bottom: 0.5rem;
+          font-weight: bold;
+          color: #313131;
+          line-height: 1.25;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          margin-top: 1rem;
+          font-size: 1.8rem;
+        }
+
         h3 {
-          margin-top: 1em;
-          margin-bottom: 0.354em;
-          line-height: 1.125;
+          margin-top: 1.5rem;
+          font-size: 1.5rem;
         }
 
         p {
           margin-top: 0;
-          margin-bottom: 1em;
+          margin-bottom: 1rem;
+        }
+
+        ul,
+        ol,
+        dl {
+          margin-top: 0;
+          margin-bottom: 1rem;
+        }
+
+        a {
+          color: #268bd2;
+          text-decoration: none;
+        }
+
+        a:hover,
+        a:focus {
+          text-decoration: underline;
         }
 
         hr {
@@ -79,8 +97,12 @@ function Layout({ path, children, pageTitle = "Next.js Blog Starter" }) {
           margin-bottom: 0;
         }
 
+        pre code {
+          font-size: 18px;
+        }
+
         .wrap {
-          max-width: 35em;
+          max-width: 38rem;
           margin-left: auto;
           margin-right: auto;
         }

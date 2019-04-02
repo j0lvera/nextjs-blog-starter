@@ -11,6 +11,7 @@ function PublishedAt({ date, link }) {
       </Link>
       <style jsx>{`
         a {
+          color: #555;
           text-decoration: none;
         }
       `}</style>

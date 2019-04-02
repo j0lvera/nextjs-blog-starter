@@ -22,12 +22,16 @@ const Post = ({ title, summary, date, path }) => (
         margin-bottom: 1em;
       }
 
-      header a {
-        text-decoration: none;
+      .post-title {
+        margin-top: 0;
+      }
+
+      .post-title a {
+        color: #313131;
       }
 
       .post:not(:last-child) {
-        margin-bottom: 4em;
+        margin-bottom: 3em;
       }
     `}</style>
   </>

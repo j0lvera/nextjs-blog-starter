@@ -22,9 +22,12 @@ function Header({ path, pageTitle }) {
       </header>
       <style jsx>{`
         header {
-          padding-top: 1em;
-          padding-bottom: 1em;
-          background-color: #eee;
+          padding-top: 2rem;
+          padding-bottom: 3rem;
+        }
+
+        .site-title a {
+          color: #313131;
         }
 
         h1 {
