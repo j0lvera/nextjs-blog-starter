@@ -1,40 +1,32 @@
 import Link from "next/link";
-import React from "react";
 import PublishedAt from "./utils/published-at";
 
 const Post = ({ title, summary, date, path }) => (
-  <>
-    <article className="post">
-      <header className="post-header">
-        <h2 className="post-title">
-          <Link href={path}>
-            <a>{title}</a>
-          </Link>
-        </h2>
+  <article>
+    <header>
+      <h2>
+        <Link href={path}>
+          <a>{title}</a>
+        </Link>
+      </h2>
 
-        <PublishedAt link={path} date={date} />
-      </header>
-
-      <div className="post-summary">{summary}</div>
-    </article>
+      <PublishedAt link={path} date={date} />
+    </header>
+    <div className="post-summary">{summary}</div>
     <style jsx>{`
-      header {
-        margin-bottom: 1em;
+      article {
+        margin-bottom: 2em;
       }
 
-      .post-title {
-        margin-top: 0;
+      a {
+        text-decoration: none;
       }
 
-      .post-title a {
-        color: #313131;
-      }
-
-      .post:not(:last-child) {
-        margin-bottom: 3em;
+      .post-summary {
+        margin-top: 1em;
       }
     `}</style>
-  </>
+  </article>
 );
 
 export default Post;
