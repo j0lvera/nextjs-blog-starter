@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import Head from "./head";
 import Nav from "./nav";
-import Container from "./container";
 import Title from "./title";
 
 function Header({ path, pageTitle, ogImage }) {

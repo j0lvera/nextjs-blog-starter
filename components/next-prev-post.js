@@ -1,6 +1,5 @@
 import PropTypes from "prop-types";
 import Link from "next/link";
-import NextIcon from "../static/next.svg";
 
 const NextPrevPost = ({ title, path, position }) => {
   const isNext = position === "next";
